@@ -1,0 +1,1008 @@
+
+%% bare_conf.tex
+%% V1.3
+%% 2007/01/11
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.7 or later) with an IEEE conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex
+%%*************************************************************************
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+\documentclass[conference,letterpaper]{IEEEtran}
+\usepackage{blindtext, graphicx}
+% Add the compsoc option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+\usepackage{listings}
+\usepackage{color}
+\lstset{
+language=R,
+basicstyle=\scriptsize\ttfamily,
+commentstyle=\ttfamily\color{blue},
+%numbers=left,
+%numberstyle=\ttfamily\color{blue}\footnotesize,
+%stepnumber=1,
+%numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+%frame=single,
+tabsize=2,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+%title=\lstname,
+escapeinside={},
+keywordstyle={},
+morekeywords={}
+}
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+\usepackage{anyfontsize}
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{hyperref}
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+%\usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+   %\usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
+% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+\usepackage{microtype}
+\usepackage{lipsum}
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\usepackage[tight,footnotesize]{subfigure}
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+
+
+
+%\usepackage[caption=false]{caption}
+%\usepackage[font=footnotesize]{subfig}
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IEEEtran.cls handling of captions and this will result in nonIEEE style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IEEE should note that IEEE rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
+% not format its papers in such ways.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Stat 601 Final Project }
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+%\author{\IEEEauthorblockN{Yue Bai}
+%\IEEEauthorblockA{Department of Statistics\\University of Wisconsin-Madison\\
+%Madison, WI 53706\\
+%Email: bai42@wisc.edu}
+%\and
+%\IEEEauthorblockN{Jiyuan Fang}
+%\IEEEauthorblockA{Department of Statistics\\University of Wisconsin-Madison\\
+%Madison, WI 53706\\
+%Email: jfang39@wisc.edu}
+%\and
+%\IEEEauthorblockN{Dazhuang Guo}
+%\IEEEauthorblockA{Department of Statistics\\University of Wisconsin-Madison\\
+%Madison, WI 53706\\
+%Email: sssss@wisc.edu}}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+\author{\IEEEauthorblockN{TEAM 7}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+}
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+
+\begin{abstract}
+\boldmath
+In this article, we use linear regression and GMC method to choose predictors that explain the response variables well. From the diagnostic of linear regression of ``response'', problem with normality, homogeneity and collinearity is showed. Box-Cox transformation is used. To overcome the effect of collinearity, stepwise regression and lasso regression are used for variable selection. We also use polynomial regression to investigate the relationship between the response variables and the polynomial terms of the predictor variables. PCA and PLS are also applied but they have limited effect on variable selection.
+ 
+For the part to optimize the simplified GMC function with two penalty we use two methods. One is to set the optimized beta with values less than a threshold to zero, and then do optimization iteratively. Another way we choose is similar to forward selection. Every time we add a variable, we calculate the corresponding $\beta$ for each variable subset that maximize the simplified GMC function with two penalty, and then select the one with the largest GMC(Y|g(x)). The second way performs better with less variables selected and relatively large GMC values. For the part to optimize GMC with lasso penalty, we do the similar forward procedure as above. And choose the four most important variables, their linear combination has the GMC value 0.11.
+ 
+We also found that there are two variables appear in both linear model and GMC variable selections. They are ``PYY'' and ``KCNJ10''. We consider them to be relatively more important.
+
+
+\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the journal you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals frown on math
+% in the abstract anyway.
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Stepwise, Lasso, Polynomial, GMC.
+\end{IEEEkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{\large Introduction}
+{\fontsize{11}{13}\selectfont 
+This Article reports the analysis of a medical clinic data. We consider to find some genes that may have some relationship with ovarian carcinoma and the reasonable model  for these genes.
+
+There are two response variables we will consider. The main response variable is named ``response'', which is the value of ``daystolastfollowup''. Another one is ``TP53'', which is related to ovarian cancer. 
+
+We choose two subsets of the data(``Set\_a.csv'' and ``Set\_i'.csv')  to analyze. In this paper, we simply call this two datasets as ``subset A'' and ``subset B''. Each subsets contains all these 567 observation with 201 genes( including ``TP53''). And there are 567 observation with 391 different genes in the combined subset A\&B.
+}
+
+
+% needed in second column of first page if using
+%\IEEEpubid
+%\IEEEpubidadjcol
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command, the
+% \label for the overall figure must come after \caption.
+% \hfil must be used as a separator to get equal spacing.
+% The subfigure.sty package works much the same way, except \subfigure is
+% used instead of \subfloat.
+%
+%\begin{figure*}[!t]
+%\centerline{\subfigure[Case I]\includegraphics[width=2.5in]{grumpcat}%
+%\label{fig_first_case}}
+%\hfil
+%\subfigure[Case II]{\includegraphics[width=2.5in]{example}%
+%\label{fig_second_case}}}
+%\caption{Simulation results}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+
+
+% An example of a floating table. Note that, for IEEE style tables, the 
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+
+
+
+
+% Note that IEEE does not put floats in the very first column - or typically
+% anywhere on the first page for that matter. Also, in-text middle ("here")
+% positioning is not used. Most IEEE journals use top floats exclusively.
+% Note that, LaTeX2e, unlike IEEE journals, places footnotes above bottom
+% floats. This can be corrected via the \fnbelowfloat command of the
+% stfloats package.
+
+\section{\large Pre-processing}
+
+{\fontsize{11}{13}\selectfont In order to find the proper transformation of the response variable(``response''), we first build a linear regression with all the 201 explanatory variables in each subset. }
+\subsection{{\fontsize{11}{13}\selectfont Diagnostic}}
+%\textbf{ {\fontsize{11}{13}\selectfont Subset A}}
+
+$\bullet$ {\fontsize{11}{13}\selectfont Outliers, Leverage Points and Influential Points}
+ 
+ {\fontsize{11}{13}\selectfont 
+ 
+With the criteria for outliers(using $outlierTest()$ ),high leverage points($h_i\textgreater \frac{2p}{n}$ ) and influential points($D_i\textgreater \frac{4}{n-p}$), there is only one outlier and high leverage point, while there are above 20 influential points in each set.}
+  
+ \begin{table}
+	\centering
+	\caption{\lowercase{\normalsize  Three kinds of points for subset \MakeUppercase{a} and subset \MakeUppercase{b}.}}
+	\label{tab:table_1}
+	\begin{tabular}{M{1.5cm}M{2cm}M{2cm}M{2cm}}
+		\hline
+		 & \normalsize Outlier &  \normalsize Leverage Points &  \normalsize Influential Points \\
+		\hline
+		  \normalsize subset A&  \normalsize 1(495) &  \normalsize 0 & \normalsize 29 \\
+		 \normalsize subset B&  \normalsize 1(495) &  \normalsize 1(310) & \normalsize 25 \\
+		  \normalsize A\&B&  \normalsize 1(495) &  \normalsize 0 & \normalsize 39 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+ 
+$\bullet$ {\fontsize{11}{13}\selectfont Multicollinearity}
+
+{\fontsize{11}{13}\selectfont Through VIF, high multicollinearity is shown in both two datasets(See TABLE II). The combined dataset has much more serious collinearity. Therefore, remedies are needed to overcome the effects of collinearity. 
+}
+\begin{table}
+	\centering
+	\caption{\lowercase{\normalsize \MakeUppercase{VIF} for \MakeUppercase{a} and subset \MakeUppercase{b}.}}
+	\label{tab:table_2}
+	\begin{tabular}{M{1.5cm}M{2cm}M{2cm}M{2cm}} % four columns, alignment for each
+		\hline
+		 & \normalsize subset A &  \normalsize subset B&  \normalsize combined subset A\&B \\
+		\hline
+		  \normalsize VIF\textgreater 5&  28 &   30&   381\\
+		 \normalsize VIF\textgreater10&  2 &  0 &   199 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+$\bullet$ {\fontsize{11}{13}\selectfont Normality}
+
+{\fontsize{11}{13}\selectfont From the Q-Q plot of the linear regression ``$response \sim . $'' in each subset(see Fig. 1, Fig. 2 and Fig. 3), we consider that the normality of the error term is  not very good, the distribution of the error seem like right skewed.  
+}
+
+
+$\bullet$ {\fontsize{11}{13}\selectfont Homogeneity}
+
+{\fontsize{11}{13}\selectfont From the residual plot of the linear regression ``$response \sim . $'' in each subset(see Fig. 1, Fig. 2 and Fig. 3), we observed that the residual is biased, the number of the residuals that are positive is larger than the number of the residuals that are negative. And the variance of the residual become larger when the fitted value is larger, hence, we consider the error term of this full linear regression model is heteroscedastic. 
+
+%Therefore, the transformation of the response variable is needed.
+ }
+\subsection{{\fontsize{11}{13}\selectfont Transformation}}
+{\fontsize{11}{13}\selectfont Since the diagnostic plots using the original response variable show that the homogeneity and the normality are not good. Thus transformation is needed. Since the response variables are positive, we consider to use log transformation(see Fig. 4, Fig. 5 and Fig. 6) and square root transformation(see Fig.7, Fig. 8 and Fig. 9). We also consider Box-Cox transformation(see Fig.10, Fig. 11 and Fig. 12) due to the lack of normality.
+
+From these diagnostic plots, we observe that after using Box-Cox transformation and square root transformation, the residual are around zero, and the homogeneity and the normality both become much better than the original one. Compared this two transformation we found that the residual plot using Box-Cox transformation is a little bit better than the one using square root transformation. 
+
+Therefore, the transformation of the response variable $Box-Cox(response)$ is chosen.}
+\section{\large Linear Regression Models}
+\subsection{{\fontsize{11}{13}\selectfont Stepwise Regression}}
+{\fontsize{11}{13}\selectfont Due to the large number of variables and collinearity, variable selection is needed. The most common way is to use stepwise regression. 
+
+We use forward, backward,stepwise method together with AIC and BIC criteria to do variable selection. We get 6 corresponding models for each response and variables combination.
+
+In order to choose the best linear model for each response and variables combination, we use k-fold cross validation and choose the one with the smallest overall mean square error( Overall MS) among the six model.
+
+%We use the ``$Box-Cox(response)$''  and ``$TP53$'' as the two dependent variables. We first use these three selection direction and two selection criterions to build 6 different model for each dependent variable in each subset. Second, we use k-fold cross-validation on each model and compute the cross validation residual sums of squares (Overall MS), which is a corrected measure of prediction error averaged across all folds. We choose one which has the smallest Overall MS among six model.
+ \begin{table}[]
+	\centering
+	\caption{\lowercase{\normalsize \MakeUppercase{L}asso regression of $\MakeUppercase{TP}53$.}}
+	\label{tab:table_2}
+	\begin{tabular}{M{2cm}M{1.5cm}M{1.5cm}M{1.5cm}} % four columns, alignment for each
+		\hline
+		 &  \normalsize subset A & \normalsize  subset B& \normalsize combined A\&B \\
+		\hline
+		  \normalsize Mallow's Cp&  84 &  51& 94\\
+		 \normalsize k-fold CV&16 & 17 &  7 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Since all the models using AIC retain so many variables while using BIC the model can get one digit number which is exactly what we want. Therefore, we decide to first choose models using BIC and then compare Overall MS among three models(forward, backward, both) to choose the final model in each subset.  
+
+The results of variables which are selected in three subsets are below:
+}
+
+\fbox{
+  \parbox{0.43\textwidth}{
+  \small{
+  \textbf{Subset A:} $response \sim PYY + FNDC4$
+
+\textbf{Subset B:} $response \sim  KCNJ10$
+
+\textbf{Subset A\&B: }$response \sim  FNDC4 + CRTAM + KCNJ10 + CXorf9$}
+}
+}
+
+\fbox{
+  \parbox{0.43\textwidth}{
+\small{ 
+\textbf{Subset A:} $TP53 \sim PALMD + GYPB + CRTAM + SLIT3 + PCAF + RHOBTB3 + RAB36 + ATP5G2 + TM9SF4 + RPL7A + HSPB2 + PYY + LOC390688 + GPR126 + C9orf78 + POLL + VAPB$
+
+\textbf{Subset B: }$TP53 \sim ODC1 + FOSB + ANKRD46 + NUBP1 + PYY + VWA1 + CHSY1 + SNRPE + BRWD1 + AMIGO2 + MAP7D3 + KNTC1 + KIAA0753 + KIF5C + NDUFA5 + ATP10A + ITIH2 + HERC2$
+
+\textbf{Subset A\&B:} $TP53 \sim  PYY + CRTAM + SLIT3 + PCAF + NIF3L1 + SURF2 + HSPB2 + SLC9A8 + POP5 + LOC390688 + TCF15 + CLK4 + C9orf78 + POLL + LBA1 + MED24 + RELB + FOSB + ANKRD46 + MIF + FLJ10815 + CHSY1 + MAP7D3 + CDKN2A + KIF5C + GCAT + ATP10A + HERC2 + WDR79 + ACVRL1 + TM9SF4 + RNF144A$}
+  }
+}
+     \emph {Remark: The response has been transformed by Box-Cox in stepwise regression. }
+
+
+
+\subsection{{\fontsize{11}{13}\selectfont Polynomial Regression}}
+{\fontsize{11}{13}\selectfont When we do GMC variable selection which is in the next section, we find that although nearly all predictor variable has a small $GMC(Y|X_i)$, some of that after some transformations such as $x^2$ or $e^x$ will have a much larger $GMC(Y|X_i)$. In that case, we consider that there are some predictor variables, whose polynomial term may has relation with response variable, therefore, we decide to do polynomial regression. 
+
+Since the number of observations is only 567, we cannot do more than 2 degrees of polynomial regression to guarantee that $(X'X)$ is non-singular. Therefore, we only do polynomial regression with degree 2 in subset A and subset B .
+
+Since the models using AIC retain so many variables, we use cross-validation to choose the final model from the three BIC model in each subset. 
+
+The results of variables which are selected in two subsets are below:
+}
+
+\fbox{
+  \parbox{0.43\textwidth}{
+  \small{
+  \textbf{Subset A: }$response \sim SPINK1\_1 + HOXC10\_2 + HABP2\_2 + SBNO2\_1 + SPRY4\_1 + FNDC4\_1 + ANXA7\_2 + CRTAM\_1$
+
+\textbf{Subset B: }$response \sim  KCNJ10\_1 + HOXC10\_2 + IFNA2\_2 + CEL\_1$
+}
+}
+}
+
+\fbox{
+  \parbox{0.43\textwidth}{
+\small{
+\textbf{ Subset A:} $TP53 \sim GYPB\_1 + FAM59A\_2 + SLC5A1\_2 + RAI16\_2 + FTHP1\_1 + CYP1B1\_2 + SLIT3\_1 + PCAF\_1 + GAS2\_1 + RHOBTB3\_1 + SS18L2\_2 + UBP1\_2 + TM9SF4\_1 + FAHD2A\_2 + COL5A1\_1 + COX8A\_2 + PYY\_1 + DOCK9\_2 + C9orf78\_1 + NPFFR1\_1 + C8orf33\_2 + TRIM36\_2 + VAPB\_1 + RELB\_1 + OSBPL8\_2 + SS18L2\_1 + HSPB2\_1 + RAB36\_1 + PALMD\_1 + IL6ST\_1$
+
+\textbf{Subset B: }$TP53 \sim RNF144A\_1 + FOSB\_1 + ANKRD46\_1 + MYBPH\_1 + ABCA3\_2 + TARDBP\_2 + NUBP1\_1 + TAF1C\_2 + CHSY1\_1 + BRWD1\_1 + CEL\_1 + KNTC1\_1 + KIAA0753\_1 + SRR\_2 + NDUFA5\_1 + ATP10A\_1 + HERC2\_1 + PYY\_1 + LIF\_2 + R3HDM1\_1 + WDR79\_2$
+}
+  }
+}
+     \emph {Remark: The response has been transformed by Box-Cox in stepwise regression. }
+
+ 
+
+
+\begin{table*}[]
+	\centering
+	\caption{\lowercase{\normalsize  \MakeUppercase{L}asso regression of $response$.}}
+	\label{tab:table_1}
+	\begin{tabular}{M{2cm}M{2cm}M{2cm}M{2cm}M{2cm}M{2cm}M{2cm}}
+		\hline
+		 & \multicolumn{2}{c}{\normalsize subset A} &  \multicolumn{2}{c}{\normalsize subset B}&  \multicolumn{2}{c}{\normalsize combined subset A\&B }\\
+		 & \normalsize $response$&  \normalsize $Box-Cox(response)$& \normalsize $response$&  \normalsize $Box-Cox(response)$& \normalsize $response$&  \normalsize $Box-Cox(response)$ \\
+		\hline
+		  \normalsize Mallow's Cp&  3&0 &7 &13 &9 & 1\\
+		 \normalsize k-fold CV     &  0 & 0&1 &1 &0& 1\\
+		\hline
+	\end{tabular}
+\end{table*}
+
+
+\subsection{{\fontsize{11}{13}\selectfont Lasso Regression}}
+{\fontsize{11}{13}\selectfont Since high multicollinearity is shown in both two datasets, we decide to use ridge or lasso regression to overcome the effect of the collinearity. A ridge solution can be hard to interpret because it is not sparse (no $\beta$ are set exactly to 0). But through lasso, some of the coefficients may be shrunk exactly to zero. Therefore, we choose lasso regression instead of ridge regression.
+
+There are two way to choose the optimal $\lambda$ argument. One is choosing the argument that minimize Mallow's Cp, the other one is using k-fold cross validation. From the TABLE III and TABLE IV, we observe that the number of variables which are selected by k-fold cross validation method is much smaller than the number of variables which are selected by Mallow's Cp. In order to obtain the appropriate number of variables,  we choose to use Mallow's Cp when choosing the variables for $response$, and use k-fold cross validation to choose the variables for $TP53$ .
+
+
+$\bullet$ {\fontsize{11}{13}\selectfont Lasso regression of ``TP53''}
+
+In subset A, the lasso regression of ``$TP53$'' selects 16 variable. In subset B, the lasso regression of ``$TP53$''  selects 17 variable. And in combined subset A\&B, the lasso regression of ``$TP53$''  selects 7 variable. 
+
+The results of variables which are selected in three subsets are below:}
+
+\fbox{
+  \parbox{0.43\textwidth}{\small{
+\textbf{Subset A:} $TP53 \sim FARS2 + C20orf12 + RBMX + NR5A2 + RPLP0 + RHOBTB3 + RAB36 + ATP5G2 + TM9SF4 + RNF40 + LOC390688 + NPFFR1 + C9orf78 + POLL + DNMBP + ARHGEF2 $
+
+\textbf{Subset B:} $TP53 \sim  PITPNA + ANKRD46 + MIF + NUBP1 + SCAMP1 + PYY + CRELD1 + JARID2 + WDR79 + KIAA0753 + KIF5C + APEX1+ ATP10A + KBTBD4 + KIF1C + HERC2 + E2F5$ 
+
+\textbf{Subset A\&B:} $TP53 \sim  ATP5G2 + TM9SF4 + NPFFR1 + POLL + WDR79 + KIAA0753 + HERC2$ }
+}
+}
+
+{\fontsize{11}{13}\selectfont
+$\bullet$ {\fontsize{11}{13}\selectfont Lasso regression of ``response''}
+
+Since on one hand, the diagnostic plot using the original ``$response$''is not too bad, on the other hand, the number of the variables which are selected by Lasso regression of ``$Box-Cox(response)$'' is either too small or too large. Therefore, we decided to use the original ``$response$'' to select the variables. (Detail are showed in Appendix) 
+
+Therefore, the results of variables which are selected in three subsets are below:}
+
+\fbox{
+  \parbox{0.43\textwidth}{\small{
+\textbf{Subset A:} $response \sim SPINK1 + PYY + CEL$
+
+\textbf{Subset B:} $response \sim  SPINK1 + PYY + CEL + MMP16 + HSD11B2 + KCNJ10 + ITIH2$
+
+\textbf{Subset A\&B: }$response \sim  SPINK1 + PYY + CEL + CRTAM + FAHD2A + MMP16 + HSD11B2 + KCNJ10 + ITIH2$}
+}
+}
+ \emph {Remark: The response variable isn't transformed in the final model of lasso regression. }
+
+$\bullet$ {\fontsize{11}{13}\selectfont Comments on Lasso regression}
+
+{\fontsize{11}{13}\selectfont From the result above, we observe that, the genes PYY, CEL and SPINK1 are three very important genes, which  are selected in subset A, subset B and combined subset A\&B. Besides, gene KCNJ10 is also a very important gene, which are in subset B and combined subset A\&B. And when we use k-fold cross validation, the lasso regression only selects gene KCNJ10. 
+
+Since TP53 isn't selected in any subset, we consider that maybe there are some variables which are more important than TP53. We then check whether  these four important genes variables also are selected from the lasso regression of ``$TP53$''. We observe that PYY is also in the model in subset B. Therefore, we consider that gene PYY may be a gene that is more important than TP53.
+}
+
+\subsection{{\fontsize{11}{13}\selectfont Other We Tried}}
+{\fontsize{11}{13}\selectfont Since PCA and PLS can also overcome the effect of the collinearity, we also try to use PCA and PLS to generate some components which are obtained from the data X. However, from the summary of the pcr() and plsr() in R, we find that in order to explain 85\% above  variance of X, at least 85 components should be involved into the model. In that case, it is impossible to delete any predictor variables by using PCA or PLS. Therefore, PCA or PLS regression is not suitable in this project.
+}
+
+\subsection{{\fontsize{11}{13}\selectfont Summary for linear regression model}}
+{\fontsize{11}{13}\selectfont We observe that the variable selection using AIC or BIC is not consistent in the single subset and combined subset. This is mainly due to the collinearity, which cannot be fully overcome by AIC or BIC.When using Lasso regression, all the variables in the final model of subset A or subset B are still in the final model of combined subset. This is because Lasso regression can overcome the effect of collinearity. Since from the result of VIF, we know that the combined subset has extremely serious collinearity, the Lasso regression is more suitable in this study, and gives more consistent result.There are some variables which are selected in three models, such as PYY, SPINK1, CEL and KCNJ10.
+}
+
+
+\section{\large GMC Variable Selections}
+% \begin{table*}[t]
+%	\centering
+%	\caption{\lowercase{\normalsize  \MakeUppercase{GMC} in each $g(.)$ function.}}
+%	\label{tab:table_1}
+%	\begin{tabular}{M{2.5cm}M{2cm}M{2cm}M{2cm}M{2cm}M{2cm}M{2cm}}
+%		\hline
+%		 & \multicolumn{2}{c}{\normalsize subset A} &  \multicolumn{2}{c}{\normalsize subset B}&  \multicolumn{2}{c}{\normalsize subset A\&B }\\
+%		 & \normalsize $response$&  \normalsize $TP53$& \normalsize $response$&  \normalsize $TP53$& \normalsize $response$&  \normalsize $TP53$ \\
+%		\hline
+%		  \normalsize $g(x)=X\beta$&  0.34&0 &7 &13 &9 & 1\\
+%		 \normalsize $g(x)=e^{X\beta}$    &  0.27 & 0&1 &1 &0& 1\\
+%		 \normalsize $g(x)=(X\beta)^2$     &  0.32 & 0&1 &1 &0& 1\\
+%		 \normalsize $g(x)=(X\beta)^3$    &  0.30 & 0&1 &1 &0& 1\\
+%		 \normalsize $g(x)=sin(X\beta)$     &  0.23 & 0&1 &1 &0& 1\\
+%		\hline
+%	\end{tabular}
+%\end{table*}
+
+
+{\fontsize{11}{13}\selectfont 
+In GMC variable selection, we first consider to choose some of the variables which has large $GMC(Y|X_i)$. However, even the largest $GMC(Y|X_i)$ is still lower than 0.1. Therefore, variables can't be selected simply by comparing their GMC, instead, we need to find the GMC between response variable and the combination of predictor variables.   
+
+In order to obtain large $GMC(Y|g(X))$ with few variables, we use GMC and Lasso penalty. To simplify, we just use the linear combination of the predictor variables. Hence, $g(x_1,x_2,...,x_p)=g(X\beta)$. 
+ 
+ 
+
+$\bullet$ {\fontsize{11}{13}\selectfont $g(x)=X\beta$, $Y'=g^{-1}(Y)=Y$ }
+
+$\bullet$ {\fontsize{11}{13}\selectfont $g(x)=e^{X\beta}$, $Y'=g^{-1}(Y)=log(Y)$}
+
+$\bullet$ {\fontsize{11}{13}\selectfont $g(x)=(X\beta)^2$, $Y'=g^{-1}(Y)=Y^{\frac{1}{2}}$}
+
+$\bullet$ {\fontsize{11}{13}\selectfont $g(x)=(X\beta)^3$, $Y'=g^{-1}(Y)=Y^{\frac{1}{3}}$}
+
+$\bullet$ {\fontsize{11}{13}\selectfont $g(x)=sin(X\beta)$, $Y'=g^{-1}(Y)=arcsin(Y)$}
+
+When the dependent variable``$response$'' and predictor variables are not standardized, the GMC is always close to 1. Since the ``$response$'' and predictor variables are not in the same scale, we decided to scale the response variable and predictor variables without centering, so that all the variable are in the same scale and all positive.
+
+
+\subsection{{\fontsize{11}{13}\selectfont Simplified GMC+Lasso}}
+ In this section, we assume that $Y=g(x_1,x_2,...,x_p)+e$ and fitted model $g(.)$ and error term $e$ is independent of each other. In this simplified case, we want to select the variables and coefficients which maximize $\frac{var(g(x)}{var(g(x))+var(e)}-\lambda_1|cov(g(x),e)|-\lambda_2\sum_{i=1}{|\beta_i|} --(1)$.
+ 
+ We use the linear regression 's ordinary least squares estimator as the initial value of $\beta$. The response variable is transformed by the inverse function of $g(x)$.
+  
+As for the choice of $\lambda$, our initial consideration is to make the 3 items to the similar magnitude. We first choose $lambda_2$ seq(0,01,0.1,by=0.01), since initial $\sum_{i=1}{|\beta_i|}$ is around 100, and choose $lambda_1$ seq(0,1,1,by=0.1), since the initial $|cov(g(x),e)|$ is approximately among 0.1 to 5. However, the coefficients don't have apparently change after reaching the max number of iteration( we set the max number of iteration to be 10000). Therefore, we try a wider range of $\lambda$, which does not make big difference, either 
+%in order to make some of the coefficients close to zero, we try to use larger $lambda_2$:c(0.1,0.5,1,5,10,20,50,100,500). Unfortunately, even the $\lambda_2$ is up to 500 or more, there is nearly no change of the variable coefficients. Apart from the $g(x)=(X\beta)^3$, other four function only gives 2 variables whose coefficients is less than 0.01. 
+
+From TABLE V and TABLE VI, we observe that in subset A, $g(x)=X\beta$ gives the largest $GMC$ among five, which is 0.34, while $g(x)=sin(X\beta)$ gives the smallest $GMC$, which is 0.23. In subset B, $g(x)=(X\beta)^2$ gives the largest $GMC$ which is 0.33, while $g(x)=e^{X\beta}$ gives the smallest $GMC$, which is 0.28. In subset A\&B, $g(x)=X\beta$ gives the largest $GMC$ which is 0.61, while $g(x)=e^{X\beta}$ gives the smallest $GMC$, which is 0.47.       
+
+We first tried to drop some variables according to the coefficients from maximizing the function(1). However, after 1 single loop, we found that the number of coefficients less than 0.05 is no more than 80(see TABLE V and TABLE VI) , and the value of $GMC$ decrease fast, and thus could not select the proper numbers of variables. So we decide to do it iteratively. Every time we set the optimized beta with values less than a threshold to zero, and then do optimization again. However, as the numbers of variables drops, the GMC value decrease a lot. So we did not adopt it as our final method.
+
+After calculating the corresponding GMC to the maximized function (1), we found that although $g(x)=X\beta$ and $g(x)={X\beta}^2$ give larger $GMC$, they are hard to drop variables. $g(x)=(X\beta)^3$ have relatively smaller $GMC$ compared with these two, but it can drop more variables than $g(x)=X\beta$ and $g(x)=e^{X\beta}$.  
+
+Since the $\lambda_2$ has limited effect on the coefficients and $GMC$. We decide to use the way similar to forward stepwise:
+
+$\bullet$ {\fontsize{11}{13}\selectfont Fix $\lambda$ according to our prior experiment. Start with all coefficients equal to zero. }
+
+$\bullet$ {\fontsize{11}{13}\selectfont Find one predictor $X_i$ most correlated with y ( largest $GMC(Y|X_i)$, and add it into the model.
+
+$\bullet$ {\fontsize{11}{13}\selectfont Add one predictor $X_j, j\neq i$, optimize coefficients by maximizing the function above(function (1)). Choose the predictor $X_j$ which has largest $GMC(Y|\beta_0+\beta_1X_i+\beta_2X_j)$ }
+
+$\bullet$ {\fontsize{11}{13}\selectfont Until: $GMC$ increase less than 0.01 when added any one more predictor.}
+
+In the Appendix, we simply select ten variables for $g(x)=X\beta$, $g(x)={X\beta}^2$ and  $g(x)=(X\beta)^3$ ( The other two are not showed since their behavior are not good in the previous experiment). By comparing the $GMC$, we observe that $g(x)=X\beta$ and $g(x)=(X\beta)^3$ are better than $g(x)={X\beta}^2$. Besides, most variables in  three models are the same, and there are some variables which are also selected in the previous lasso regression or stepwise regression. For each response variable in each subset, we choose the one with the largest $GMC$ among three transformations.
+
+The results of variables which are selected in three subsets are below:}
+
+\fbox{
+  \parbox{0.43\textwidth}{\small{
+\textbf{Subset A:} $repsonse \sim (NRG1 + C1orf27 + PTPN3 + GPR6 + FARS2 + CDH22 + NPFFR1 + C21orf59 + LMO7 + VAPB)^3 $
+
+\textbf{Subset B: }$response \sim  (KCNJ10 + GPR27 + PYY + CLEC4E + ORM1 + SNRPE + AQP5 + WDR79 + C18orf1 + CRISP1)^3$ 
+
+\textbf{Subset A\&B:} $response \sim  KCNJ10 + CYB5R2 + C1orf27 + ESRRG + SLC16A5 + ACCN3 + FZR1 + GADD45G + NPY + MAP3K6$ }
+}
+}
+
+
+\fbox{
+  \parbox{0.43\textwidth}{\small{
+\textbf{Subset A: }$TP53 \sim (POLL + FARS2 + ARHGEF2 + RELB + PIGG + RCAN3 + NCAPG + MAPKAP1 + TMEM2 + TSPAN1)^2 $
+
+\textbf{Subset B: }$TP53 \sim  (KIAA0753 + KBTBD4 + GPR27 + KLRB1 + HSD11B2 + ZNF343 + AQP5 + HDGF + ZNF587 + CCT6A)^3$ 
+
+\textbf{Subset A\&B:} $TP53 \sim  KCNJ10 + CYB5R2 + C1orf27 + ESRRG + SLC16A5 + ACCN3 + FZR1 + GADD45G + NPY + MAP3K6$ }
+}
+}
+
+
+\subsection{{\fontsize{11}{13}\selectfont General GMC+Lasso}}
+
+For the situation that error term $e$ and fitted model $g(.)$ are not independent, we use  $GMC(Y|g(X\beta))-\lambda\sum_{i=1}{|\beta_i|}$ instead.
+
+We first use simulation method to choose the optimal variable combinations. Simulate 200 times, each time randomly select 20 variables from the 201 predictor variables. The simulation result is not very good, the values of $\frac{Var(g(x))}{Var(g(x))+Var(e)}$ could be larger than 0.3 sometimes, but the values of $GMC(Y|g(x))$ exceed 0.1 rarely. 
+
+Therefore, we also use forward selection here. The function we optimize is $GMC(Y|g(X\beta))-\lambda\sum_{i=1}{|\beta_i|}$. Since the $g(x)=X\beta$ gives relatively large GMC values, we simply use $g(x)=X\beta$  here. We calculated all the GMC value with a sequence of $\lambda$ (see TABLE V and TABLE VI, which is in Appendix), and find the impact from the value of $\lambda$ is limited so we set it to be 1 here for simplicity. 
+
+We only use ``response'' in subset B as an example. The first 4 variables we choose are \textbf{PYY, KCNJ10, MBIP, FLG}. The corresponding $GMC$ value is 0.1074.
+
+Compared with previous selection, for ``response'' in subset B,  we use less  variables but obtain larger $GMC$, this is probably because the $g(x)$ and the error term are not independent, so the large value of function(1) may not lead to large value of $GMC$. 
+
+\subsection{{\fontsize{11}{13}\selectfont Comments on GMC variable selection}}
+ 
+%$\bullet$ {\fontsize{11}{13}\selectfont Limitation and Remedies}
+
+In this section, we combine GMC and lasso to do variable selection, however, it seems that this method didn't work very well. From Lasso regression ,we knows that the large $\lambda$ will make most of the coefficients to zero. However, when we optimize the two functions, even the $\lambda$ is up to 500 or more, there is nearly no change of the variable coefficients, few of them have the small coefficient ( less than 0.01 in the regression of ``$response$''). Here are some reasons we surmise: 
+
+First, due to limited time of iteration,most of the optimizations can't converge, which means that the result we get is not the optimal solution. To be specific, there are 201 arguments we need to optimize in the function, so it may need a super large number of iteration in order to find the optimal solution. To solve this problem, we may need to drop some variables in the beginning.
+  
+Second, due to the initial value which is set intuitively, even when the optimization converge,  the results are local optimal solution, which is far different with the global optimal solution. Since there are 201 coefficients, there may be a large number of local optimal. Therefore, we may need to try different value of initial parameter.  
+
+Third, the penalty applied to GMC is aimed at constraining the number of non-zero coefficients. Its effect may be influenced due to the different range of GMC term and the penalty, term, which are (0,1) and (0, $\infty$) respectively. According to the first term in the lasso regression, which is residual sum of square, the penalty's effect might be improved by transforming the GMC term into a value between zero to infinity. 
+
+\subsection{{\fontsize{11}{13}\selectfont Summary for GMC variable selection}}
+{\fontsize{11}{13}\selectfont In this part, we found that using forward selection may have a much better result compared with the simulation method or dropping variable whose coefficient less than a certain value. By optimizing general $GMC$, we may select some variable such as PYY and KCNJ10, which is also in three linear model. }
+
+ 
+}
+
+\section{\large Future Work}
+
+{\fontsize{11}{13}\selectfont First, the computation speed seems to be the most problem for us. With improvement of it, we would be able to apply GMC criterion in stepwise(both direction) variable selection, which might perform better than forward method. Second, There are much more choice for $g(x)$. Since we choose the very common five. There might be some function that fit this issue better and we can dig them out in future. Last but not least, biological background might be a helper when deciding the relative importance of different genes. If we had some prior knowledge, we can use method like Bayes or weighted linear regression to get a better choice of genes.
+}
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+\newpage
+
+\section*{\large Appendix}
+
+\lstinputlisting{result.R}
+
+\newpage
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.0in]{m1}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{diagnostic plot of ``$response \sim . $'' in subset A}
+\label{fig_sim}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.0in]{m2}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{diagnostic plot of ``$response \sim . $'' in subset B}
+\label{fig_sim}
+\end{figure}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.0in]{m3}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{diagnostic plot of ``$response \sim . $'' in subset A\&B}
+\label{fig_sim}
+\end{figure}
+% use section* for acknowledgement
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{picture}}]{John Doe}
+\blindtext
+\end{IEEEbiography}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+
+% that's all folks
+\end{document}
+
+
